@@ -10,34 +10,20 @@ export async function POST(request: Request) {
   try {
     const { items, customerName, customerEmail, deliveryAddress } = await request.json()
 
-    // Calculate total amount (including delivery fee)
-    const totalAmount = items.reduce((sum: number, item: any) => sum + item.price, 0) + 5.00 // $5.00 delivery fee
-
     // Create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: [
-        ...items.map((item: any) => ({
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: item.name,
-            },
-            unit_amount: Math.round(item.price * 100), // Convert to cents
+      line_items: items.map((item: any) => ({
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: item.name,
+            description: item.description,
           },
-          quantity: item.quantity || 1,
-        })),
-        {
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: 'Delivery Fee',
-            },
-            unit_amount: 500, // $5.00 in cents
-          },
-          quantity: 1,
+          unit_amount: Math.round(item.price * 100), // Convert to cents
         },
-      ],
+        quantity: item.quantity,
+      })),
       mode: 'payment',
       success_url: `${process.env.NEXT_PUBLIC_APP_URL}/order/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/order/cancel`,
@@ -46,12 +32,37 @@ export async function POST(request: Request) {
         customerName,
         deliveryAddress,
       },
+      shipping_address_collection: {
+        allowed_countries: ['US'],
+      },
+      shipping_options: [
+        {
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: {
+              amount: 500, // $5.00
+              currency: 'usd',
+            },
+            display_name: 'Delivery Fee',
+            delivery_estimate: {
+              minimum: {
+                unit: 'business_day',
+                value: 1,
+              },
+              maximum: {
+                unit: 'business_day',
+                value: 2,
+              },
+            },
+          },
+        },
+      ],
     })
 
     // Send order confirmation email
     await sendOrderConfirmationEmail({
       items,
-      totalAmount,
+      totalAmount: items.reduce((sum: number, item: any) => sum + item.price, 0) + 5.00, // $5.00 delivery fee
       customerName,
       customerEmail,
       deliveryAddress,

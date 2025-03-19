@@ -2,9 +2,11 @@
 
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { createCheckoutSession } from '../../lib/stripe'
 
 export default function OrderPage() {
   const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     store: '',
     productLink: '',
@@ -22,10 +24,33 @@ export default function OrderPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Implement form submission logic
-    console.log('Form submitted:', formData)
-    // For now, just redirect to home page
-    router.push('/')
+    setIsLoading(true)
+
+    try {
+      // Calculate the base price (you can adjust this based on your business logic)
+      const basePrice = 29.99 // Example base price
+      
+      // Create items array for Stripe
+      const items = [{
+        name: `Order from ${formData.store}`,
+        price: basePrice,
+        quantity: formData.quantity,
+        description: `${formData.productLink} - Size: ${formData.size}, Color: ${formData.color}`
+      }]
+
+      // Create Stripe checkout session
+      await createCheckoutSession({
+        items,
+        customerName: formData.name,
+        customerEmail: formData.email,
+        deliveryAddress: `${formData.building} - Room ${formData.room}, ${formData.address}`
+      })
+    } catch (error) {
+      console.error('Error creating checkout session:', error)
+      alert('There was an error processing your order. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -62,9 +87,9 @@ export default function OrderPage() {
                   className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                 >
                   <option value="">Select a store</option>
-                  <option value="hm">H&M</option>
-                  <option value="oldnavy">Old Navy</option>
-                  <option value="americaneagle">American Eagle</option>
+                  <option value="H&M">H&M</option>
+                  <option value="Old Navy">Old Navy</option>
+                  <option value="American Eagle">American Eagle</option>
                 </select>
               </div>
 
@@ -243,9 +268,12 @@ export default function OrderPage() {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  disabled={isLoading}
+                  className={`inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white ${
+                    isLoading ? 'bg-indigo-400 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-700'
+                  } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
                 >
-                  Place Order
+                  {isLoading ? 'Processing...' : 'Place Order'}
                 </button>
               </div>
             </form>
