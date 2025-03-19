@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
-import { sendOrderConfirmationEmail } from '@/lib/email'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2023-10-16',
@@ -57,16 +56,6 @@ export async function POST(request: Request) {
           },
         },
       ],
-    })
-
-    // Send order confirmation email
-    await sendOrderConfirmationEmail({
-      items,
-      totalAmount: items.reduce((sum: number, item: any) => sum + item.price, 0) + 5.00, // $5.00 delivery fee
-      customerName,
-      customerEmail,
-      deliveryAddress,
-      sessionId: session.id,
     })
 
     return NextResponse.json({ id: session.id })
