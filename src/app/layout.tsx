@@ -2,15 +2,12 @@
 
 import React, { useState } from 'react'
 import './globals.css'
-import type { Metadata } from 'next'
 import Link from 'next/link'
 
-export const metadata: Metadata = {
-  title: 'CloToGo - Syracuse University Clothing Delivery',
-  description: 'Get your favorite clothes delivered to your Syracuse University residence',
-}
+// Remove metadata since we're using 'use client'
+// Metadata must be in a Server Component, not a Client Component
 
-export default function RootLayout({
+function RootLayout({
   children,
 }: {
   children: React.ReactNode
@@ -20,6 +17,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <title>CloToGo - Syracuse University Clothing Delivery</title>
+        <meta name="description" content="Get your favorite clothes delivered to your Syracuse University residence" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </head>
       <body className="min-h-screen bg-gray-50">
@@ -127,4 +126,6 @@ export default function RootLayout({
       </body>
     </html>
   )
-} 
+}
+
+export default RootLayout 
