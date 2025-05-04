@@ -5,7 +5,7 @@ export default function AboutPage() {
         <div className="lg:text-center">
           <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">About Us</h2>
           <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            Making Campus Fashion Shopping Easy
+            Making Fashion Shopping Easy
           </p>
           <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
             CloToGo is revolutionizing how people shop for clothing by bringing their favorite fashion items directly to their doorstep.
@@ -39,7 +39,7 @@ export default function AboutPage() {
               <div className="ml-16">
                 <h3 className="text-lg leading-6 font-medium text-gray-900">Our Vision</h3>
                 <p className="mt-2 text-base text-gray-500">
-                  To become the go-to on-demand clothing delivery service for people, in the Syracuse area and into other university campuses, ensuring accessibility to trendy and affordable fashion.
+                  To become the go-to on-demand clothing delivery service for people, in the Syracuse area and soon major cities, ensuring accessibility to trendy and affordable fashion.
                 </p>
               </div>
             </div>

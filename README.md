@@ -5,8 +5,7 @@ CloToGo is a campus-focused clothing delivery service that provides Syracuse Uni
 ## Features
 
 - Easy ordering process
-- Delivery to dorms and off-campus residences
-- Support for multiple retailers (H&M, Old Navy, American Eagle)
+- Delivery to residences
 - Secure payment processing with Stripe
 - Real-time order tracking
 - Student-friendly pricing
