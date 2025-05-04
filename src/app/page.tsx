@@ -64,7 +64,7 @@ export default function Home() {
                 3. Get Delivered 
               </h3>
               <p className="mt-3 text-lg text-gray-500">
-                We'll handle the shopping and deliver your items directly to your location. Pay for item through one time link or pay with cash)
+                We'll handle the shopping and deliver your items directly to your location. Pay online with a one-time link or in cash at delivery.
               </p>
             </div>
           </div>

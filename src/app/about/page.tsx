@@ -54,7 +54,7 @@ export default function AboutPage() {
               <div className="ml-16">
                 <h3 className="text-lg leading-6 font-medium text-gray-900">How We Work</h3>
                 <p className="mt-2 text-base text-gray-500">
-                  We deliver your popular retailers like H&M, Old Navy, and American Eagle to bring you the latest fashion trends. Our dedicated team handles the shopping and delivery process, ensuring your items arrive safely and on time to your campus location.
+                  We deliver your popular retailers like H&M, Old Navy, and American Eagle to bring you the latest fashion trends. Our dedicated team handles the shopping and delivery process, ensuring your items arrive safely and on time to your location.
                 </p>
               </div>
             </div>
