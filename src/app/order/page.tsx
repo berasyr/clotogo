@@ -10,25 +10,40 @@ export default function OrderPage() {
     const form = e.target as HTMLFormElement
     const formData = new FormData(form)
     
-    fetch('https://formspree.io/f/xanoegyy', {
+    // Send to first email
+    const firstEmailPromise = fetch('https://formspree.io/f/xanoegyy', {
       method: 'POST',
       body: formData,
       headers: {
         'Accept': 'application/json'
       }
     })
-    .then(response => {
-      if (response.ok) {
-        // Redirect to Stripe checkout
-        window.location.href = 'https://buy.stripe.com/aEU2b9aMFgeM2reeUU'
-      } else {
-        throw new Error('Form submission failed')
+
+    // Send to second email
+    const secondEmailPromise = fetch('https://formspree.io/f/mwpolgeb', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
       }
     })
-    .catch(error => {
-      console.error('Error:', error)
-      alert('Failed to submit form. Please try again.')
-    })
+
+    // Wait for both requests to complete
+    Promise.all([firstEmailPromise, secondEmailPromise])
+      .then(responses => {
+        // Check if both responses are successful
+        const allSuccessful = responses.every(response => response.ok)
+        if (allSuccessful) {
+          // Redirect to Stripe checkout
+          window.location.href = 'https://buy.stripe.com/aEU2b9aMFgeM2reeUU'
+        } else {
+          throw new Error('Form submission failed')
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error)
+        alert('Failed to submit form. Please try again.')
+      })
   }
 
   return (
