@@ -17,8 +17,8 @@ function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>CloToGo - Syracuse University Clothing Delivery</title>
-        <meta name="description" content="Get your favorite clothes delivered to your Syracuse University residence" />
+        <title>CloToGo - Style Delivered</title>
+        <meta name="description" content="Get your favorite clothes delivered" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <link rel="icon" href="/favicon.ico" sizes="32x32" type="image/x-icon" />
       </head>

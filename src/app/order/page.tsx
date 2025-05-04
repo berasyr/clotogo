@@ -32,163 +32,164 @@ export default function OrderPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white shadow sm:rounded-lg">
-          <div className="px-4 py-5 sm:p-6">
-            <h3 className="text-lg leading-6 font-medium text-gray-900">
-              Place Your Order
-            </h3>
-            <div className="mt-2 max-w-xl text-sm text-gray-500">
-              <p>Fill out the form below to place your order. We'll handle the rest!</p>
-            </div>
-            <form
-              onSubmit={handleSubmit}
-              className="mt-5 space-y-6"
-            >
-              {/* Hidden input for Stripe redirect */}
-              <input type="hidden" name="_next" value="https://buy.stripe.com/aEU2b9aMFgeM2reeUU" />
-              
-              {/* Store Name */}
-              <div>
-                <label htmlFor="store" className="block text-sm font-medium text-gray-700">
-                  Store Name *
-                </label>
-                <input
-                  type="text"
-                  id="store"
-                  name="store"
-                  required
-                  placeholder="Enter the store name"
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-              </div>
-
-              {/* Product Link */}
-              <div>
-                <label htmlFor="productLink" className="block text-sm font-medium text-gray-700">
-                  Product Link *
-                </label>
-                <textarea
-                  id="productLink"
-                  name="productLink"
-                  required
-                  rows={3}
-                  placeholder="Paste the product link or provide a detailed description"
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                {/* Size */}
-                <div>
-                  <label htmlFor="size" className="block text-sm font-medium text-gray-700">
-                    Size *
-                  </label>
-                  <input
-                    type="text"
-                    id="size"
-                    name="size"
-                    required
-                    placeholder="Enter the size"
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  />
-                </div>
-
-                {/* Quantity */}
-                <div>
-                  <label htmlFor="quantity" className="block text-sm font-medium text-gray-700">
-                    Quantity *
-                  </label>
-                  <input
-                    type="number"
-                    id="quantity"
-                    name="quantity"
-                    min="1"
-                    required
-                    defaultValue="1"
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  />
-                </div>
-              </div>
-
-              {/* Customer Information */}
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  />
-                </div>
-              </div>
-
-              {/* Address Information */}
-              <div className="space-y-4">
-                <div>
-                  <label htmlFor="address" className="block text-sm font-medium text-gray-700">
-                    Street Address *
-                  </label>
-                  <input
-                    type="text"
-                    id="address"
-                    name="address"
-                    required
-                    placeholder="Enter your street address (e.g., 123 Main St)"
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  />
-                  <p className="mt-1 text-sm text-gray-500">
-                    Please enter your complete street address
-                  </p>
-                </div>
-
-                <div>
-                  <label htmlFor="aptNumber" className="block text-sm font-medium text-gray-700">
-                    Apartment Number *
-                  </label>
-                  <input
-                    type="text"
-                    id="aptNumber"
-                    name="aptNumber"
-                    required
-                    placeholder="Enter your apartment number"
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  />
-                  <p className="mt-1 text-sm text-gray-500">
-                    If you don't have an apartment number, enter "N/A"
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex justify-end">
-                <button
-                  type="submit"
-                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Proceed to Checkout
-                </button>
-              </div>
-            </form>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-indigo-100 py-12 flex items-center justify-center">
+      <div className="w-full max-w-2xl bg-white shadow-xl rounded-2xl p-8">
+        <h2 className="text-3xl font-extrabold text-indigo-700 mb-2 text-center">Place Your Order</h2>
+        <p className="text-gray-600 mb-8 text-center">Fill out the form below to place your order. We'll handle the rest!</p>
+        <form onSubmit={handleSubmit} className="space-y-7">
+          {/* Store Name */}
+          <div>
+            <label htmlFor="store" className="block text-sm font-medium text-gray-700 mb-1">
+              Store Name
+            </label>
+            <input
+              type="text"
+              id="store"
+              name="store"
+              required
+              placeholder="Enter the store name"
+              className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-base"
+            />
           </div>
-        </div>
+
+          {/* Product Link */}
+          <div>
+            <label htmlFor="productLink" className="block text-sm font-medium text-gray-700 mb-1">
+              Product Link
+            </label>
+            <textarea
+              id="productLink"
+              name="productLink"
+              required
+              rows={3}
+              placeholder="Paste the product link or provide a detailed description"
+              className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-base"
+            />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* Size */}
+            <div>
+              <label htmlFor="size" className="block text-sm font-medium text-gray-700 mb-1">
+                Size
+              </label>
+              <input
+                type="text"
+                id="size"
+                name="size"
+                required
+                placeholder="Enter the size"
+                className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-base"
+              />
+            </div>
+
+            {/* Quantity */}
+            <div>
+              <label htmlFor="quantity" className="block text-sm font-medium text-gray-700 mb-1">
+                Quantity
+              </label>
+              <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                min="1"
+                required
+                defaultValue="1"
+                className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-base"
+              />
+            </div>
+          </div>
+
+          {/* Customer Information */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                Full Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Enter your full name"
+                className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-base"
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="Enter your email"
+                className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-base"
+              />
+            </div>
+          </div>
+
+          {/* Phone Number */}
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              placeholder="Enter your phone number"
+              className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-base"
+            />
+          </div>
+
+          {/* Address Information */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">
+                Street Address
+              </label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                required
+                placeholder="Enter your street address (e.g., 123 Main St)"
+                className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-base"
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                Please enter your complete street address
+              </p>
+            </div>
+            <div>
+              <label htmlFor="aptNumber" className="block text-sm font-medium text-gray-700 mb-1">
+                Apartment Number
+              </label>
+              <input
+                type="text"
+                id="aptNumber"
+                name="aptNumber"
+                required
+                placeholder="Enter your apartment number"
+                className="block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-base"
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                If you don't have an apartment number, enter "N/A"
+              </p>
+            </div>
+          </div>
+
+          <div className="flex justify-end mt-8">
+            <button
+              type="submit"
+              className="inline-flex justify-center py-3 px-8 border border-transparent shadow-lg text-lg font-semibold rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition"
+            >
+              Proceed to Checkout
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   )
