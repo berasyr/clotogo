@@ -8,7 +8,7 @@ export default function AboutPage() {
             Making Campus Fashion Shopping Easy
           </p>
           <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-            CloToGo is revolutionizing how Syracuse University students shop for clothing by bringing their favorite fashion items directly to their doorstep.
+            CloToGo is revolutionizing how people shop for clothing by bringing their favorite fashion items directly to their doorstep.
           </p>
         </div>
 
@@ -24,7 +24,7 @@ export default function AboutPage() {
               <div className="ml-16">
                 <h3 className="text-lg leading-6 font-medium text-gray-900">Our Mission</h3>
                 <p className="mt-2 text-base text-gray-500">
-                  CloToGo aims to bridge the gap between convenience and fashion by providing fast, reliable, and student-friendly delivery of clothing items. We understand the busy schedules of students and seek to enhance their shopping experience by eliminating unnecessary trips to stores while ensuring they stay stylish and confident.
+                  CloToGo aims to bridge the gap between convenience and fashion by providing fast, reliable, and delivery of clothing items. We understand the busy schedules of people and seek to enhance their shopping experience by eliminating unnecessary trips to stores while ensuring they stay stylish and confident.
                 </p>
               </div>
             </div>
@@ -39,7 +39,7 @@ export default function AboutPage() {
               <div className="ml-16">
                 <h3 className="text-lg leading-6 font-medium text-gray-900">Our Vision</h3>
                 <p className="mt-2 text-base text-gray-500">
-                  To become the go-to on-demand clothing delivery service for college students, expanding beyond Syracuse and into other university campuses, ensuring accessibility to trendy and affordable fashion.
+                  To become the go-to on-demand clothing delivery service for people, in the Syracuse area and into other university campuses, ensuring accessibility to trendy and affordable fashion.
                 </p>
               </div>
             </div>
@@ -54,7 +54,7 @@ export default function AboutPage() {
               <div className="ml-16">
                 <h3 className="text-lg leading-6 font-medium text-gray-900">How We Work</h3>
                 <p className="mt-2 text-base text-gray-500">
-                  We partner with popular retailers like H&M, Old Navy, and American Eagle to bring you the latest fashion trends. Our dedicated team handles the shopping and delivery process, ensuring your items arrive safely and on time to your campus location.
+                  We deliver your popular retailers like H&M, Old Navy, and American Eagle to bring you the latest fashion trends. Our dedicated team handles the shopping and delivery process, ensuring your items arrive safely and on time to your campus location.
                 </p>
               </div>
             </div>
@@ -72,7 +72,7 @@ export default function AboutPage() {
                   Have questions? We're here to help! Reach out to us at:
                   <br />
                   <a href="mailto:contact@clotogo.com" className="text-indigo-600 hover:text-indigo-500">
-                    contact@clotogo.com
+                    bfelouz@syr.edu
                   </a>
                 </p>
               </div>

@@ -1,91 +1,84 @@
 'use client'
 
-import React, { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import React from 'react'
 
 export default function OrderPage() {
-  const router = useRouter()
-  const [formData, setFormData] = useState({
-    store: '',
-    productLink: '',
-    size: '',
-    color: '',
-    quantity: 1,
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-    building: '',
-    room: '',
-    notes: '',
-  })
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Implement form submission logic
-    console.log('Form submitted:', formData)
-    // For now, just redirect to home page
-    router.push('/')
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
+    
+    // Submit the form to Formspree
+    const form = e.target as HTMLFormElement
+    const formData = new FormData(form)
+    
+    fetch('https://formspree.io/f/xanoegyy', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        // Redirect to Stripe checkout
+        window.location.href = 'https://buy.stripe.com/aEU2b9aMFgeM2reeUU'
+      } else {
+        throw new Error('Form submission failed')
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error)
+      alert('Failed to submit form. Please try again.')
+    })
   }
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white shadow sm:rounded-lg">
-          <div className="px-4 py-5 sm:p-6">
-            <h3 className="text-lg leading-6 font-medium text-gray-900">
+        <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+          <div className="px-6 py-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">
               Place Your Order
             </h3>
-            <div className="mt-2 max-w-xl text-sm text-gray-500">
+            <div className="text-gray-600 mb-6">
               <p>Fill out the form below to place your order. We'll handle the rest!</p>
             </div>
-            <form onSubmit={handleSubmit} className="mt-5 space-y-6">
-              {/* Store Selection */}
-              <div>
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-6"
+            >
+              {/* Store Name */}
+              <div className="space-y-1">
                 <label htmlFor="store" className="block text-sm font-medium text-gray-700">
-                  Store
+                  Store Name
                 </label>
-                <select
+                <input
+                  type="text"
                   id="store"
                   name="store"
                   required
-                  value={formData.store}
-                  onChange={handleChange}
-                  className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                >
-                  <option value="">Select a store</option>
-                  <option value="hm">H&M</option>
-                  <option value="oldnavy">Old Navy</option>
-                  <option value="americaneagle">American Eagle</option>
-                </select>
+                  placeholder="Enter the store name"
+                  className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
               </div>
 
-              {/* Product Details */}
-              <div>
+              {/* Product Link */}
+              <div className="space-y-1">
                 <label htmlFor="productLink" className="block text-sm font-medium text-gray-700">
-                  Product Link or Description
+                  Product Link
                 </label>
                 <textarea
                   id="productLink"
                   name="productLink"
                   required
-                  value={formData.productLink}
-                  onChange={handleChange}
                   rows={3}
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  placeholder="Paste the product link or provide a detailed description"
+                  className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
 
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-                <div>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                {/* Size */}
+                <div className="space-y-1">
                   <label htmlFor="size" className="block text-sm font-medium text-gray-700">
                     Size
                   </label>
@@ -94,28 +87,13 @@ export default function OrderPage() {
                     id="size"
                     name="size"
                     required
-                    value={formData.size}
-                    onChange={handleChange}
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    placeholder="Enter the size"
+                    className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
 
-                <div>
-                  <label htmlFor="color" className="block text-sm font-medium text-gray-700">
-                    Color
-                  </label>
-                  <input
-                    type="text"
-                    id="color"
-                    name="color"
-                    required
-                    value={formData.color}
-                    onChange={handleChange}
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  />
-                </div>
-
-                <div>
+                {/* Quantity */}
+                <div className="space-y-1">
                   <label htmlFor="quantity" className="block text-sm font-medium text-gray-700">
                     Quantity
                   </label>
@@ -125,16 +103,15 @@ export default function OrderPage() {
                     name="quantity"
                     min="1"
                     required
-                    value={formData.quantity}
-                    onChange={handleChange}
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    defaultValue="1"
+                    className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
               </div>
 
               {/* Customer Information */}
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                <div>
+                <div className="space-y-1">
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                     Full Name
                   </label>
@@ -143,13 +120,12 @@ export default function OrderPage() {
                     id="name"
                     name="name"
                     required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    placeholder="Enter your full name"
+                    className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
 
-                <div>
+                <div className="space-y-1">
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                     Email
                   </label>
@@ -158,28 +134,30 @@ export default function OrderPage() {
                     id="email"
                     name="email"
                     required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    placeholder="Enter your email"
+                    className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
+              </div>
 
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  />
-                </div>
+              {/* Phone Number */}
+              <div className="space-y-1">
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  placeholder="Enter your phone number"
+                  className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                />
+              </div>
 
-                <div>
+              {/* Address Information */}
+              <div className="space-y-4">
+                <div className="space-y-1">
                   <label htmlFor="address" className="block text-sm font-medium text-gray-700">
                     Street Address
                   </label>
@@ -188,64 +166,38 @@ export default function OrderPage() {
                     id="address"
                     name="address"
                     required
-                    value={formData.address}
-                    onChange={handleChange}
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    placeholder="Enter your street address (e.g., 123 Main St)"
+                    className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
+                  <p className="text-sm text-gray-500">
+                    Please enter your complete street address
+                  </p>
                 </div>
 
-                <div>
-                  <label htmlFor="building" className="block text-sm font-medium text-gray-700">
-                    Building Name
+                <div className="space-y-1">
+                  <label htmlFor="aptNumber" className="block text-sm font-medium text-gray-700">
+                    Apartment Number
                   </label>
                   <input
                     type="text"
-                    id="building"
-                    name="building"
+                    id="aptNumber"
+                    name="aptNumber"
                     required
-                    value={formData.building}
-                    onChange={handleChange}
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    placeholder="Enter your apartment number"
+                    className="block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
+                  <p className="text-sm text-gray-500">
+                    If you don't have an apartment number, enter "N/A"
+                  </p>
                 </div>
-
-                <div>
-                  <label htmlFor="room" className="block text-sm font-medium text-gray-700">
-                    Room Number
-                  </label>
-                  <input
-                    type="text"
-                    id="room"
-                    name="room"
-                    required
-                    value={formData.room}
-                    onChange={handleChange}
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  />
-                </div>
-              </div>
-
-              {/* Additional Notes */}
-              <div>
-                <label htmlFor="notes" className="block text-sm font-medium text-gray-700">
-                  Additional Notes
-                </label>
-                <textarea
-                  id="notes"
-                  name="notes"
-                  value={formData.notes}
-                  onChange={handleChange}
-                  rows={3}
-                  className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
               </div>
 
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                  Place Order
+                  Proceed to Checkout
                 </button>
               </div>
             </form>

@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@sendgrid/mail": "^8.1.4",
+    "@googlemaps/js-api-loader": "^1.16.2",
+    "@sendgrid/mail": "^8.1.5",
     "@stripe/stripe-js": "^2.4.0",
+    "@types/google.maps": "^3.55.4",
     "next": "14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

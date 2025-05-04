@@ -15,10 +15,10 @@ export default function Home() {
         </div>
         <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Your Campus Fashion Delivery Service
+            Your Fashion Delivery Service
           </h1>
           <p className="mt-6 text-xl text-indigo-100 max-w-3xl">
-            Get your favorite fashion items from H&M, Old Navy, and American Eagle delivered directly to your dorm or off-campus residence at Syracuse University.
+            Get your favorite fashion items from your favorite stores delivered directly to your door. 
           </p>
           <div className="mt-10">
             <Link
@@ -46,7 +46,7 @@ export default function Home() {
                 1. Choose Your Items
               </h3>
               <p className="mt-3 text-lg text-gray-500">
-                Browse your favorite stores and select the items you want. Share the product links or descriptions with us.
+                Browse your favorite stores and select the items you want. Share the product links or descriptions with us!
               </p>
             </div>
 
@@ -55,16 +55,16 @@ export default function Home() {
                 2. Place Your Order
               </h3>
               <p className="mt-3 text-lg text-gray-500">
-                Fill out our simple order form with your preferences and delivery details.
+                Fill out our simple order form with your delivery details (Syracuse, NY Area Only)
               </p>
             </div>
 
             <div className="mt-10 -mx-4 relative lg:mt-0">
               <h3 className="text-2xl font-extrabold text-gray-900 tracking-tight sm:text-3xl">
-                3. Get Delivered
+                3. Get Delivered 
               </h3>
               <p className="mt-3 text-lg text-gray-500">
-                We'll handle the shopping and deliver your items directly to your location on campus.
+                We'll handle the shopping and deliver your items directly to your location. Pay for item through one time link or pay with cash)
               </p>
             </div>
           </div>
