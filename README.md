@@ -29,7 +29,7 @@ CloToGo is a campus-focused clothing delivery service that provides Syracuse Uni
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/clotogo.git
+git clone https://github.com/berasyr/clotogo.git
 cd clotogo
 ```
 

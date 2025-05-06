@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Newsletter from '@/components/Newsletter'
 
 export default function Home() {
   return (
@@ -86,6 +87,25 @@ export default function Home() {
               >
                 Order Now
               </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Newsletter Section */}
+      <div className="bg-white border-t">
+        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+          <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
+            <div>
+              <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">
+                Stay Updated
+              </h2>
+              <p className="mt-3 text-lg text-gray-500">
+                Subscribe to our newsletter for exclusive deals and fashion tips.
+              </p>
+            </div>
+            <div className="mt-8 lg:mt-0 text-indigo-600">
+              <Newsletter />
             </div>
           </div>
         </div>

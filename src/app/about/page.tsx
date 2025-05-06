@@ -71,9 +71,15 @@ export default function AboutPage() {
                 <p className="mt-2 text-base text-gray-500">
                   Have questions? We're here to help! Reach out to us at:
                   <br />
-                  <a href="mailto:contact@clotogo.com" className="text-indigo-600 hover:text-indigo-500">
-                    bfelouz@syr.edu
-                  </a>
+                  <div className="space-y-1">
+                    <a href="mailto:bfelouz@syr.edu" className="text-indigo-600 hover:text-indigo-500 block">
+                      bfelouz@syr.edu
+                    </a>
+                    <a href="mailto:kimcmill@syr.edu" className="text-indigo-600 hover:text-indigo-500 block">
+                      kimcmill@syr.edu
+                    </a>
+                    
+                  </div>
                 </p>
               </div>
             </div>
