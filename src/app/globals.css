@@ -11,4 +11,17 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-end-rgb));
+}
+
+@keyframes banner-move {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-banner-move {
+  animation: banner-move 15s linear infinite;
 } 

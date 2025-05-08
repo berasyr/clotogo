@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import Banner from './components/Banner'
 
 export default function ClientLayout({
   children,
@@ -12,6 +13,7 @@ export default function ClientLayout({
 
   return (
     <>
+      <Banner />
       <nav className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
@@ -106,11 +108,75 @@ export default function ClientLayout({
         {children}
       </main>
 
-      <footer className="bg-white border-t mt-auto">
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm text-gray-500">
-            © {new Date().getFullYear()} CloToGo. All rights reserved.
-          </p>
+      <footer className="bg-white border-t mt-auto py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center space-y-6">
+            <div className="flex flex-col items-center space-y-6">
+              <h3 className="text-2xl font-bold text-gray-900">Connect With Us</h3>
+              <div className="flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-16">
+                <a
+                  href="https://www.linkedin.com/in/berafelouz/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-4 text-indigo-600 hover:text-indigo-800 transition-colors group"
+                >
+                  <svg className="h-16 w-16 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                  <span className="text-xl font-semibold"></span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/kimesha-mcmillan/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-4 text-indigo-600 hover:text-indigo-800 transition-colors group"
+                >
+                  <svg className="h-16 w-16 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                  <span className="text-xl font-semibold">Kimesha McMillan</span>
+                </a>
+                <a
+                  href="https://www.instagram.com/clotogo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-4 text-indigo-600 hover:text-indigo-800 transition-colors group"
+                >
+                  <img 
+                    src="/black-and-white-outline-instagram-app-logo-icon-7017516951369307x990iaok2.png" 
+                    alt="Instagram" 
+                    className="h-12 w-12 group-hover:scale-110 transition-transform"
+                  />
+                  <span className="text-xl font-semibold">@clotogo</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/clotogo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-4 text-indigo-600 hover:text-indigo-800 transition-colors group"
+                >
+                  <svg className="h-16 w-16 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                  <span className="text-xl font-semibold">CloToGo (Company)</span>
+                </a>
+                <a
+                  href="https://www.clotogo.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-4 text-indigo-600 hover:text-indigo-800 transition-colors group"
+                >
+                  <svg className="h-16 w-16 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 2c1.657 0 3.156.672 4.242 1.758A5.978 5.978 0 0120 12c0 1.657-.672 3.156-1.758 4.242A5.978 5.978 0 0112 20a5.978 5.978 0 01-4.242-1.758A5.978 5.978 0 014 12c0-1.657.672-3.156 1.758-4.242A5.978 5.978 0 0112 4zm0 2a8 8 0 100 16 8 8 0 000-16zm0 2a6 6 0 110 12A6 6 0 0112 8zm0 2a4 4 0 100 8 4 4 0 000-8z"/>
+                  </svg>
+                  <span className="text-xl font-semibold">CloToGo Website</span>
+                </a>
+              </div>
+            </div>
+            <p className="text-center text-sm text-gray-500">
+              © {new Date().getFullYear()} CloToGo. All rights reserved.
+            </p>
+          </div>
         </div>
       </footer>
     </>
