@@ -115,6 +115,18 @@ export default function ClientLayout({
               <h3 className="text-2xl font-bold text-gray-900">Connect With Us</h3>
               <div className="flex flex-col sm:flex-row items-center space-y-6 sm:space-y-0 sm:space-x-16">
                 <a
+                  href="https://example.com/campus-ambassador-form"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Our Campus Ambassador Program empowers students to become the lead representative for CloToGo at their school. As a campus lead, you'll oversee marketing efforts, help recruit drivers, and play a key role in growing our presence locally. It's a paid opportunity with bonuses for meeting goals. This summer, you can also help launch CloToGo in your hometown!"
+                  className="flex items-center space-x-4 text-pink-600 hover:text-pink-800 transition-colors group font-bold border-2 border-pink-400 rounded-lg px-4 py-2 bg-pink-50 hover:bg-pink-100 shadow"
+                >
+                  <svg className="h-10 w-10 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 14.93V17a1 1 0 11-2 0v-.07A8.001 8.001 0 014.07 13H7a1 1 0 110 2H4.07A8.001 8.001 0 0111 4.07V7a1 1 0 112 0V4.07A8.001 8.001 0 0119.93 11H17a1 1 0 110-2h2.93A8.001 8.001 0 0113 19.93z"/>
+                  </svg>
+                  <span className="text-lg font-bold">CloToGo Campus Ambassador Program</span>
+                </a>
+                <a
                   href="https://www.linkedin.com/in/berafelouz/"
                   target="_blank"
                   rel="noopener noreferrer"
