@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
-import Banner from './components/Banner'
 
 export default function ClientLayout({
   children,
@@ -13,7 +12,6 @@ export default function ClientLayout({
 
   return (
     <>
-      <Banner />
       <nav className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
